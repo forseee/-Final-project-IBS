@@ -1,29 +1,28 @@
-import axios, { AxiosInstance } from "axios";
-import {ApiPosts} from "./posts";
-import {ApiPhotos} from "./photos";
+import axios, { AxiosInstance } from 'axios';
+import { ApiItems } from './items';
+import { ApiCities } from './cities';
 
-class Api {
-  private axios: AxiosInstance;
-  posts: ApiPosts;
-  photos: ApiPhotos;
-  constructor(axios: AxiosInstance) {
-    this.axios = axios;
-    this.posts = new ApiPosts(axios);
-    this.photos = new ApiPhotos(axios);
+  class Api {
+    private axios: AxiosInstance;
+    items: ApiItems;
+    cities: ApiCities;
+    constructor(axios: AxiosInstance) {
+      this.axios = axios;
+      this.items = new ApiItems(axios);
+      this.cities = new ApiCities(axios);
+    }
   }
-}
 //главный объект для запросов
 let API: Api;
 const createAPI = (headers = {}) => {
   API = new Api(
     axios.create({
+      baseURL: '/api',
       withCredentials: true,
-      baseURL: "https://jsonplaceholder.typicode.com",
-      headers,
-      // headers: {
-      //   //  "Authorization": "API_KEY"
-      // },
-    })
+      headers: {
+        'API-token': '6047b22b2da048618b4f8b293369e44c',
+      },
+    }),
   );
 };
 createAPI({});

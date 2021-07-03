@@ -1,10 +1,16 @@
 import React from 'react';
-import { Chart } from '../../components/Chart/Chart';
 
 const Home = () => {
   return (
-    <div>
-      <Chart />
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingTop: '300px',
+        
+      }}>
+      <p>Это домашняя страничка сайти аналитики групы №6</p>
     </div>
   );
 };

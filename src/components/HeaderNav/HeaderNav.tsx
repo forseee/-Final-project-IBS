@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './headerNav.scss';
 
 type Ilink = {
@@ -7,45 +7,34 @@ type Ilink = {
   text: string;
   icon: string;
 };
+
 type PropsType = {
   navLinks: Array<Ilink>;
   background: string;
-  hoverBackground: string;
   linkColor: string;
   logo: string;
-  children?: any;
 };
 
-export const HeaderNav: React.FC<PropsType> = ({
-  navLinks,
-  background,
-  hoverBackground,
-  linkColor,
-  logo,
-  children,
-}) => {
-  const [hoverIndex, setHoverIndex] = useState(-1);
-  const [navOpen, setNavOpen] = useState(false);
+export const HeaderNav: React.FC<PropsType> = ({ navLinks, background, logo }) => {
+  const location = useLocation();
+  const path = location.pathname;
+
+  console.log(path);
 
   return (
     <nav className="responsive-toolbar" style={{ background }}>
-      <ul style={{ background }} className={navOpen ? 'active' : ''}>
-        <figure onClick={() => setNavOpen(!navOpen)}>
+      <ul style={{ background }}>
+        <figure>
           <img src={logo} height="40px" width="40px" alt="logo-nav-toggler" />
         </figure>
         {navLinks.map((link, index) => (
-          <li
-            key={index}
-            onMouseEnter={() => setHoverIndex(index)}
-            onMouseLeave={() => setHoverIndex(-1)}
-            style={{ background: hoverIndex === index ? hoverBackground || '#999' : '' }}>
-            <Link to={link.path} style={{ color: linkColor }}>
+          <li key={index}>
+            <Link to={link.path} className={path === link.path ? 'active' : ''}>
               {link.text}
               <i className={link.icon} />
             </Link>
           </li>
         ))}
-        {children}
       </ul>
     </nav>
   );

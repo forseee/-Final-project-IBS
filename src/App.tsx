@@ -25,7 +25,6 @@ export const App = () => {
         navLinks={navLinks}
         logo={logo}
         background="#fff"
-        hoverBackground="#ddd"
         linkColor="#777"
       />
 

@@ -1,36 +1,38 @@
-import {IPost} from "../../models/post";
-import {DataAction, IDataActionTypes} from "./types";
-import {IPhoto} from "../../models/photo";
+import { IItem } from '../../models/item';
+import { DataAction, IDataActionTypes } from './types';
+import { ICity } from '../../models/city';
+import { IStatistic } from '../../models/statistic';
 
 /**
- * Записать POSTS в store
- * @param posts
+ * Записать ITEMS в store
+ * @param items
  */
-export const data__setPosts = (posts: Array<IPost> | null): DataAction => ({
-  type: IDataActionTypes.DATA__SET_POSTS,
-  payload: posts,
+export const data__setItems = (items: Array<IItem> | null): DataAction => ({
+  type: IDataActionTypes.DATA__SET_ITEMS,
+  payload: items,
 });
+
 /**
- * Записать POST в store
- * @param post
+ * Записать CITIES в store
+ * @param cities
  */
-export const data__setPost = (post: IPost | null): DataAction => ({
-  type: IDataActionTypes.DATA__SET_POST,
-  payload: post,
+export const data__setCities = (cities: Array<ICity> | null): DataAction => ({
+  type: IDataActionTypes.DATA__SET_CITIES,
+  payload: cities,
 });
+
 /**
- * Записать PHOTOS в store
- * @param photos
+ * Записать STATISTIC в store
+ * @param statistic
  */
-export const data__setPhotos = (photos: Array<IPhoto> | null): DataAction => ({
-  type: IDataActionTypes.DATA__SET_PHOTOS,
-  payload: photos,
+export const data__setStatistic = (statistic: IStatistic | null): DataAction => ({
+  type: IDataActionTypes.DATA__SET_STATISTIC,
+  payload: statistic,
 });
+
 /**
- * Записать PHOTO в store
- * @param photo
+ * LOADER
  */
-export const data__setPhoto = (photo: IPhoto | null): DataAction => ({
-  type: IDataActionTypes.DATA__SET_PHOTO,
-  payload: photo,
+export const data__loading = (): DataAction => ({
+  type: IDataActionTypes.DATA__LOADING,
 });

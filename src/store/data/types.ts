@@ -1,30 +1,33 @@
-import { IPost } from '../../models/post';
-import { IPhoto } from '../../models/photo';
+import { IItem } from '../../models/item';
+import { ICity } from '../../models/city';
+import { IStatistic } from '../../models/statistic';
 
 export enum IDataActionTypes {
-  DATA__SET_POSTS = '[DATA] SET_POSTS',
-  DATA__SET_POST = '[DATA] SET_POST',
-  DATA__SET_PHOTOS = '[DATA] SET_PHOTOS',
-  DATA__SET_PHOTO = '[DATA] SET_PHOTO',
+  DATA__SET_ITEMS = '[DATA] SET_ITEMS',
+  DATA__SET_CITIES = '[DATA] SET_CITIES',
+  DATA__SET_STATISTIC = '[DATA] SET_STATISTIC',
+  DATA__LOADING = '[DATA] LOADING',
 }
 
 // Типы ActionCreators
-interface SetPostsAction {
-  type: IDataActionTypes.DATA__SET_POSTS;
-  payload: Array<IPost> | null;
+interface SetItemsAction {
+  type: IDataActionTypes.DATA__SET_ITEMS;
+  payload: Array<IItem> | null;
 }
-interface SetPostAction {
-  type: IDataActionTypes.DATA__SET_POST;
-  payload: IPost | null;
+
+interface SetCitiesAction {
+  type: IDataActionTypes.DATA__SET_CITIES;
+  payload: Array<ICity> | null;
 }
-interface SetPhotosAction {
-  type: IDataActionTypes.DATA__SET_PHOTOS;
-  payload: Array<IPhoto> | null;
+
+interface SetStatisticAction {
+  type: IDataActionTypes.DATA__SET_STATISTIC;
+  payload: IStatistic | null;
 }
-interface SetPhotoAction {
-  type: IDataActionTypes.DATA__SET_PHOTO;
-  payload: IPhoto | null;
+
+interface loadingAction {
+  type: IDataActionTypes.DATA__LOADING;
 }
 
 // Общий тип Action
-export type DataAction = SetPostsAction | SetPostAction | SetPhotosAction | SetPhotoAction;
+export type DataAction = SetItemsAction | SetCitiesAction | SetStatisticAction | loadingAction;
